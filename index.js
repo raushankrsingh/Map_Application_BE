@@ -9,6 +9,8 @@ dotenv.config();
 
 app.use(express.json());
 
+const port = process.env.PORT || 5000
+
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
@@ -20,6 +22,6 @@ mongoose
 app.use("/api/users", userRoute);
 app.use("/api/pins", pinRoute);
 
-app.listen(30001, () => {
-    console.log("Backend server is running!");
+app.listen(port, () => {
+    console.log(`Backend server is running on port ${port}`);
 });
